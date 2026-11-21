@@ -41,3 +41,11 @@ test("headphone and headset microphones are external", async () => {
   assert.equal(isBuiltInMicrophone("USB Headset Microphone"), false);
   assert.equal(isBuiltInMicrophone("AirPods Pro"), false);
 });
+
+test("webcam microphones are external, however Windows names them", async () => {
+  const { isBuiltInMicrophone } = await load();
+
+  assert.equal(isBuiltInMicrophone("Microphone (Web Camera) (5843:e818)"), false);
+  assert.equal(isBuiltInMicrophone("Microphone (HD Pro Webcam C920)"), false);
+  assert.equal(isBuiltInMicrophone("Microphone (USB Camera)"), false);
+});

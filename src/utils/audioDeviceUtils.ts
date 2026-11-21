@@ -34,6 +34,10 @@ export function isBuiltInMicrophone(label: string): boolean {
       "external",
       "headset",
       "webcam",
+      // Windows names many UVC webcam mics "Microphone (Web Camera)", which
+      // "webcam" misses; picked as built-in, dictation records a distant mic
+      // near silence and Parakeet decodes nothing.
+      "camera",
       "iphone",
       "ipad",
       // Phones connected to the computer (Continuity, Bluetooth) carry the
